@@ -6,36 +6,33 @@ public class TheVariableShop2 {
 		
 		//Byte
 		System.out.println("Enter a byte, this a number between -128 and 127:");
-		String byte1 = scanner.nextByte();
+		byte byte1 = scanner.nextByte();
 		System.out.println("Your byte: " + byte1);
 		
 		//Short
 		System.out.println("Enter a short, this a number between -32,768 and 32,767:");
-		String short1 = scanner.nextShort();
+		short short1 = scanner.nextShort();
 		System.out.println("Your short: " + short1);
 		
 		//Int
 		System.out.println("Enter an int, this a number between -2,147,483,648 and 2,147,483,647:");
-		String int1 = scanner.nextInt();
-		System.out.println("Your short: " + short1);
+		int int1 = scanner.nextInt();
+		System.out.println("Your int: " + int1);
 		
 		
-		
+        //Long
+        System.out.println("Enter a long, this is a number between -9,223,372,036,854,775,808 and 9,223,372,036,854,775,807:");
+        long long1 = scanner.nextLong();
+        System.out.println("Your long: " + long1);
+        
+        //Float
+        System.out.println("Enter a float, this is a number with up to 7 decimals:");
+        float float1 = scanner.nextFloat();
+        System.out.println("Your float: " + float1);
+        
+        //Double
+        System.out.println("Enter a double, this is a number with up to 15 decimals:");
+        double double1 = scanner.nextDouble();
+        System.out.println("Your double: " + double1);
 	}
 }
-
-		byte byte1 = -128;
-		byte byte2 = 127;
-		short short1 = -32768;
-		short short2 = 32767;
-		int int1 = -2147483648;
-		int int2 = 2147483647;
-		long long1 = -9223372036854775808l;
-		long long2 = 9223372036854775807l;
-		float float1 = 1.1234567f;
-		double double1 = 1.123456789012345;
-		boolean boolean1 = true;
-		char char1 = '&';
-		String text = "Hey!";
-		String intro = "These are ";
-		String intro2 = "This is a ";
