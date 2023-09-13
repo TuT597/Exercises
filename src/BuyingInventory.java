@@ -23,6 +23,8 @@ public class BuyingInventory {
         System.out.println("\nWhat are you interested in my friend?");
         
         int item = scanner.nextInt();
+
+        //This can be done much shorter by using a list and mapping gold values to the items (list entries)
         
         if (name.equals(discountName)) {
             switch (item) {
