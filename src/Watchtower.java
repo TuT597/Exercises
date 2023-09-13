@@ -7,7 +7,8 @@ public class Watchtower {
         System.out.println("Give the enemies X and Y coordinates: ");
         int x = scanner.nextInt();
         int y = scanner.nextInt();
-        
+
+        //DRY mistake here. I could've have reduced the amount of IF statements by using concactination just looking at North/South then concatinating the rest.
         if (x > 0 && y > 0) {
             System.out.println("The enemy is approaching from the North-West!");
         } else if (x > 0 && y < 0) {
