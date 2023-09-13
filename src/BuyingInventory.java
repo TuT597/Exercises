@@ -49,6 +49,8 @@ public class BuyingInventory {
                     break;
             }
         } else { 
+            /*In the future don't use multiple switch cases. I could've made the price a variable and simply divide it by
+                2 if the name checkes out. This is a DRY mistake. */
             switch (item) {
                 case 1:
                     System.out.println("Rope costs 10 gold");
