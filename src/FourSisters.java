@@ -16,7 +16,7 @@ public class FourSisters {
     }
     
     private static void moreEggsForDuckbear() {
-        for (int i = 3; i <= 20; i++) {
+        for (int i = 1; i <= 20; i++) {
             int eggs = i;
             int eggsPerSister = eggs / 4;
             int eggsForDuckbear = eggs % 4; 
