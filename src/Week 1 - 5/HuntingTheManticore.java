@@ -4,10 +4,10 @@ public class HuntingTheManticore {
     
     public static Scanner scanner = new Scanner(System.in);
     private static int round = 1;
-    private static int townHealth = 15;
     private static int townMaxHealth = 15;
-    private static int manticoreHealth = 10;
+    private static int townHealth = townMaxHealth;
     private static int manticoreMaxHealth = 10;
+    private static int manticoreHealth = manticoreMaxHealth;
     private static int manticoreRange;
     private static int cannonDamage;
     private static int cannonRange;
@@ -52,17 +52,17 @@ public class HuntingTheManticore {
             if (cannonRange == manticoreRange){
                 System.out.println("That round was a DIRECT HIT!");
                 manticoreHealth -= cannonDamage;
-                townHealth -= 1;
+                townHealth--;
                 round++;
                 return true;
             } else if (cannonRange > manticoreRange){
                 System.out.println("That round OVERSHOT the target.");
-                townHealth -= 1;
+                townHealth--;
                 round++;
                 return true;
             } else {
                 System.out.println("That round FELL SHORT of the target.");
-                townHealth -= 1;
+                townHealth--;
                 round++;
                 return true;
             }
@@ -75,17 +75,25 @@ public class HuntingTheManticore {
     
     private static int cannonballDamage() {
         if (round % 3 == 0 && round % 5 == 0) return 10;
-        else if (round % 3 == 0) return 3;
-        else if (round % 5 == 0) return 3;
+        else if (round % 3 == 0 || round % 5 == 0) return 3;
         else return 1;
     }
     
-    private static int askForNumberInRange(String text, int min, int max) {
+    
+    //Recursie fout
+    /*private static int askForNumberInRange(String text, int min, int max) {
         System.out.println(text);
         int number = scanner.nextInt();
         if (number >= min && number <= max) return number;
         else return askForNumberInRange("Error, invalid number! Try again!", min, max);
-    }
-}
-
+    }*/
     
+    private static int askForNumberInRange(String text, int min, int max) {
+        System.out.println(text);
+        do {
+            int number = scanner.nextInt();
+            if (number >= min && number <= max) return number;
+            else System.out.println("Invalid input try again.");
+        } while (true);
+    }
+}  
