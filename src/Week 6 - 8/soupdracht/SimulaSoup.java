@@ -1,17 +1,22 @@
-package soupstore;
 import java.util.Scanner;
 
-public class {
-    public static void main(String... args) {
+public class SimulaSoup {
+    
+    private static String recipe;
+    private static String ingredient;
+    private static String seasoning;
+    private static Soup soup;
+    
+    public static void main(String[] args) {
         printMenu();
-        
         chooseOptions();
-        
         assembleSoup();
+
+        System.out.println("Your order: " + titleCase(soup.getSeasoning()) + " " + titleCase(soup.getIngredient()) + " " + titleCase(soup.getRecipe()));
     }
     
     public static void printMenu() {
-        //write and print a menu.
+        //write and print a menu. In the future could possibly auto generate the menu by collecting the enums values. Would personally also just use arrays instead.
         System.out.println("""
             Welcome to Simula's soup store! You can select what type of meal you want, what main ingredient and how it\'s seasoned!
             
@@ -35,28 +40,29 @@ public class {
     }
     
     public static void chooseOptions() {
-        //Collect input from user and create variable from them
+        //Collect input from user and create variables from them
         Scanner scanner = new Scanner(System.in);
         
         System.out.println("What type of meal would you like to eat?");
-        String recipe = scanner.nextLine();
+        recipe = scanner.nextLine();
         
         System.out.println("\nAnd what would you like for your main ingredient?");
-        String ingredient = scanner.nextLine();
+        ingredient = scanner.nextLine();
         
         System.out.println("\nHow would you like your meal seasoned?");
-        String spice = scanner.nextLine();
+        seasoning = scanner.nextLine();
     }
     
     public static void assembleSoup() {
-        //Create new soup object
-        //Use setters to select ingredients
-        //Build a string using getters in the format Seasoning Ingredient Recipe
-        Soup soup = new Soup();
-        
+        //Initializes the soup object and assigns variables through setters
+        soup = new Soup();
         soup.setRecipe(recipe);
         soup.setIngredient(ingredient);
-        soup.setSpice(spice);
-        
+        soup.setSeasoning(seasoning);
+    }
+    
+    public static String titleCase(String input) {
+        //Simple method to title case format the returned enums
+        return input.substring(0,1).toUpperCase() + input.substring(1).toLowerCase();
     }
 }
