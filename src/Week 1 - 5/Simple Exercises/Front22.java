@@ -1,3 +1,6 @@
+//Reduced scope of x
+//Removed duplicate return statement by placing it outside of the if
+
 import java.lang.String;
 
 public class Front22 {
@@ -10,16 +13,14 @@ public class Front22 {
     }
     
     private static String front22 (String input) {
-        int x;
         String temp = "";
         
         if (input.length() < 2) {
-            x = input.length();
+            int x = input.length();
             temp = input.substring(0, x);
-            return temp + input + temp;
         } else {
             temp = input.substring(0,2);
-            return temp + input + temp;
         }
+        return temp + input + temp;
     }
 }

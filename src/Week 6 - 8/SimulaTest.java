@@ -22,7 +22,7 @@ public class SimulaTest {
         do {
             System.out.println("The box is, " + state.toString().toLowerCase() + " What do you want to do? ");
             
-            String boxAction = scanner.nextLine();
+            String boxAction = scanner.nextLine().toLowerCase();
             
             System.out.println();
             
@@ -32,7 +32,7 @@ public class SimulaTest {
                         System.out.println("You open the box.");
                         state = BoxState.OPEN;
                     } else {
-                        System.out.println("Box can't be opened in it's current state.");
+                        boxReaction("opened");;
                     }
                     break;
                 case "close":
@@ -40,7 +40,7 @@ public class SimulaTest {
                         System.out.println("You close the box.");
                         state = BoxState.CLOSED;
                     } else {
-                        System.out.println("Box can't be closed in it's current state.");
+                        boxReaction("closed");
                     }
                     break;
                 case "lock":
@@ -48,7 +48,7 @@ public class SimulaTest {
                         System.out.println("You lock the box.");
                         state = BoxState.LOCKED;
                     } else {
-                        System.out.println("Box can't be locked in it's current state.");
+                        boxReaction("locked");
                     }
                     break;
                 case "unlock":
@@ -56,13 +56,18 @@ public class SimulaTest {
                         System.out.println("You unlock the box.");
                         state = BoxState.CLOSED;
                     } else {
-                        System.out.println("Box can't be unlocked in it's current state.");
+                        boxReaction("unlocked");
                     }
                     break;
             }
             
             System.out.println();
         } while (true);
+    }
+    
+    private static void boxReaction(String input){
+       System.out.println("Box can't be " + input + " in it's current state.");
+       return;
     }
 }
     

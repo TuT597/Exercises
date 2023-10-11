@@ -1,3 +1,5 @@
+//Removed unnecessary return
+
 public class Max1020 {
     public static void main(String[] args) {
         System.out.println(
@@ -16,8 +18,6 @@ public class Max1020 {
         
         if (y >= 10 && y <= 20) {
             if (y > x || x > 20) return y;
-        } else {
-            return 0;
         }
         return 0;
     }

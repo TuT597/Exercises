@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Clocktower {
-    public static void main (String[] args) {
+    public static void main (String[] args){
         Scanner scanner = new Scanner(System.in);
         
         System.out.println("Give a number to the tower: ");
@@ -9,7 +9,7 @@ public class Clocktower {
         if (number % 2 == 0) {
             System.out.println("Tick");
         } else { 
-        System.out.println("Tock");
+            System.out.println("Tock");
         }
     }
 }

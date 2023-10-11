@@ -7,7 +7,7 @@ public class Soup {
     }
     
     enum MainIngredient {
-        MUSHROOM, CHICKEN, CARROT, POTATOE
+        MUSHROOM, CHICKEN, CARROT, POTATO
     }
     
     enum SeasoningType {

@@ -1,10 +1,19 @@
+//Formatting adjusted
+//Changed name of variable item changed to itemNameName
+//While loop changed to do while
+//Made buying item input not case sensitive
+//Turned prints into a block to reduce repetition
+//Shortened priceGenerator() method using ternary operator
+
+
 import java.util.Scanner;
 import java.util.Map;
 
 public class BuyingInventory {
     
-    static final private Map<String, Float> INVENTORY = Map.of("Rope", 5f, "Torches", 8f, "Climbing Equipment", 12f, "Clean Water", 1f, "Machete", 10f, "Canoes", 100f, "Food Supplies", 1f);
-        
+    static final private Map<String, Double> INVENTORY = Map.of("rope", 5.0, "torches", 8.0, "climbing equipment", 12.0, "clean water", 1.0, "machete", 10.0, "canoes",
+                                                                100.0, "food supplies", 1.0);
+
     public static void main (String[] args) {
         Scanner scanner = new Scanner(System.in);
         String discountName = "Tuyan";
@@ -18,32 +27,31 @@ public class BuyingInventory {
             discountEnabled = true;
         }
         
-        System.out.println("The following items are for sale!\n");
-        System.out.println("1. Rope");
-        System.out.println("2. Torches");
-        System.out.println("3. Climbing Equipment");
-        System.out.println("4. Clean Water");
-        System.out.println("5. Machete");
-        System.out.println("6. Canoe");
-        System.out.println("7. Food Supplies");
+        System.out.println("""
+        The following items are for sale!
         
-        while (true) {
+        1. Rope
+        2. Torches
+        3. Climbing Equipment
+        4. Clean Water
+        5. Machete
+        6. Canoe
+        7. Food Supplies   
+        """);
+        
+        do {
             System.out.println("\nWhat are you interested in my friend?");
-            String item = scanner.nextLine();
-            priceGenerator(item, discountEnabled);
-        }
+            String itemName = scanner.nextLine().toLowerCase();
+            priceGenerator(itemName, discountEnabled);
+        } while (true);
     }
     
-    private static void priceGenerator(String item, boolean discountEnabled) {
-        float price;
-        if (INVENTORY.containsKey(item)) {
-            if (discountEnabled) {
-                price = INVENTORY.get(item) * 0.5f;
-            } else {
-                price = INVENTORY.get(item);
-            }
-            System.out.println(item + " costs " + price + " gold");
+    private static void priceGenerator(String itemName, boolean discountEnabled) {
+        if (INVENTORY.containsKey(itemName)) {
+            double price = discountEnabled ? INVENTORY.get(itemName) * 0.5 : INVENTORY.get(itemName);
+            System.out.println("\n" + itemName + " costs " + price + " gold");
             System.exit(0);
-        } 
+        } else System.out.println("I'm afraid i don't carry that item, want something else?");
+        return;
     }
 }

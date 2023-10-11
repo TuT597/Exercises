@@ -1,19 +1,22 @@
+//cannonShot() repetition reduced
+//Scanner scope adjusted to private
+//final static variables properly named
+
 import java.util.Scanner;
 
 public class HuntingTheManticore {
     
-    public static Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
     private static int round = 1;
-    private static int townMaxHealth = 15;
-    private static int townHealth = townMaxHealth;
-    private static int manticoreMaxHealth = 10;
-    private static int manticoreHealth = manticoreMaxHealth;
+    private final static int TOWN_MAX_HEALTH = 15;
+    private static int townHealth = TOWN_MAX_HEALTH;
+    private final static int MANTICORE_MAX_HEALTH = 10;
+    private static int manticoreHealth = MANTICORE_MAX_HEALTH;
     private static int manticoreRange;
     private static int cannonDamage;
-    private static int cannonRange;
     
     
-    public static void main (String[] args) {
+    public static void main (String[] args){
         manticoreRange = askForNumberInRange("Player one, at what range between 0 and 100 do you want to position the manticore?", 0, 100);
         
         for(int x = 0; x < 50; x++){
@@ -22,7 +25,7 @@ public class HuntingTheManticore {
         
         System.out.println("Player 2, it is your turn.");
         
-        while(true) {
+        while(true){
             if (manticoreHealth > 0 && townHealth > 0){
                 cannonDamage = cannonballDamage();
                 
@@ -30,7 +33,7 @@ public class HuntingTheManticore {
                 -------------------------------------------------------
                 STATUS: Round: %d City: %d/%d Manticore %d/%d
                 The cannon is expected to deal %d damage this round."""
-                .formatted(round, townHealth, townMaxHealth, manticoreHealth, manticoreMaxHealth, cannonDamage));
+                .formatted(round, townHealth, TOWN_MAX_HEALTH, manticoreHealth, MANTICORE_MAX_HEALTH, cannonDamage));
                 
                 cannonShot();
                 
@@ -46,26 +49,20 @@ public class HuntingTheManticore {
     
     private static boolean cannonShot() {
         System.out.print("Enter desired cannon range: ");
-        cannonRange = scanner.nextInt();
+        int cannonRange = scanner.nextInt();
         
-        if (cannonRange > 0 && cannonRange <= 100){
-            if (cannonRange == manticoreRange){
+        if (cannonRange > 0 && cannonRange <= 100) {
+            if (cannonRange == manticoreRange) {
                 System.out.println("That round was a DIRECT HIT!");
                 manticoreHealth -= cannonDamage;
-                townHealth--;
-                round++;
-                return true;
-            } else if (cannonRange > manticoreRange){
+            } else if (cannonRange > manticoreRange) {
                 System.out.println("That round OVERSHOT the target.");
-                townHealth--;
-                round++;
-                return true;
             } else {
                 System.out.println("That round FELL SHORT of the target.");
-                townHealth--;
-                round++;
-                return true;
             }
+            townHealth--;
+            round++;
+            return true;
         } else {
             System.out.println("Invalid input, please enter a range between 0 and 100");
             cannonShot();
@@ -78,15 +75,6 @@ public class HuntingTheManticore {
         else if (round % 3 == 0 || round % 5 == 0) return 3;
         else return 1;
     }
-    
-    
-    //Recursie fout
-    /*private static int askForNumberInRange(String text, int min, int max) {
-        System.out.println(text);
-        int number = scanner.nextInt();
-        if (number >= min && number <= max) return number;
-        else return askForNumberInRange("Error, invalid number! Try again!", min, max);
-    }*/
     
     private static int askForNumberInRange(String text, int min, int max) {
         System.out.println(text);

@@ -1,4 +1,5 @@
-import java.lang.Math;
+//Math function removed
+//Ternary operator implemented for more concise code
 
 public class Diff21 {
     public static void main (String[] args) {
@@ -11,9 +12,9 @@ public class Diff21 {
     }
     
     private static int diff21(int x) {
-        int diff = 21;
-        int number = Math.abs(x - diff);
-        if (x > 21) return number * 2;
+        int number = x <= 21 
+            ? 21 - x 
+            : (x - 21) * 2;
         return number;
     }
 }
