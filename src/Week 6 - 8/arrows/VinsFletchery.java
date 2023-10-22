@@ -118,9 +118,8 @@ public class VinsFletchery{
         //Returns a number that stands for the enum value you want to use for the arrow
         do {
             int temp = scanner.nextInt() - 1;
-            if (temp <= 2){
-                return temp;
-            } else System.out.println("That is not one of the options, try again!\n");
+            if (temp <= 2) return temp;
+            else System.out.println("That is not one of the options, try again!\n");
         } while (true);
     }
     
